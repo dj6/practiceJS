@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>div style</title>
+	<style type='text/css'>
+		#control{
+			width: 300px;
+			margin: 10px auto;
+			text-align: center;
+		}
+	
+		#container{
+			width: 100px;		
+			height: 100px;
+			margin: 10px auto;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id='control'>
+		<button>变宽</button>
+		<button>变高</button>
+		<button>变色</button>
+		<button>隐藏</button>
+		<button>重置</button>
+		<div id='container'>
+	</div>
+	
+		
+	</div>
+	<script type='text/javascript'>
+	var buttons = document.getElementById('control').getElementsByTagName('button');
+	var len = buttons.length;
+	var div = document.getElementById('container');
+	//alert(buttons.length);
+	var cssAttr = ['width','height','backgroundColor','display','display'];
+	var cssText = ['200px','200px','green','none','block'];
+	while(len--){
+		buttons[len].index = len;
+		buttons[len].onclick = function(){
+			this.index == buttons.length - 1 && (div.style.cssText = '');		
+			div.style[cssAttr[this.index]] = cssText[this.index];
+		};
+	}
+	</script>
+</body>
+</html>

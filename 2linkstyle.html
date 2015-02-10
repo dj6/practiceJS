@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stylelink</title>
+	<link rel="stylesheet" href="red.css">
+	<style type='text/css'>
+	*{
+		margin:0;
+		padding: 0;
+	}
+		#container{
+			width: 500px;
+			margin: 10px auto;
+		}
+		#changebar{
+			overflow: hidden;
+			margin-bottom: 10px;
+		}
+		#changebar div{
+			width: 15px;
+			height: 15px;
+			float: left;
+			margin-right: 5px;
+			cursor: pointer;
+		}
+		
+		#changebar div.current{
+			background-color: white;
+		}
+		/*	
+
+		#changebar div div{
+			width: 5px;
+			height: 5px;
+			margin: 5px;
+			display: none;
+			background-color: white;
+
+		}*/
+		#navbar{
+			border: 1px solid white;
+			overflow: hidden;
+		}
+		#navbar li{
+			width: 16.43%;
+			list-style: none;
+			float: left;
+			height: 30px;
+			line-height: 30px;
+			border-right: 1px solid white;
+			text-align: center;
+		}	
+
+
+		#navbar li:last-child{
+			border-right: 0;
+		}
+		#navbar li a{
+			text-decoration: none;
+			color: white;
+			cursor: pointer;
+		}
+		#navbar li a:hover{
+			text-decoration: underline;
+		}
+
+		#red{
+			border: 5px solid red;
+			background-color: red;
+		}
+		#green{
+			border: 5px solid green;
+			background-color: green;
+
+		}
+		#black{
+			border: 5px solid black;
+			background-color: black;
+		}
+
+
+
+
+	</style>
+
+</head>
+<body>
+	<div id='container'>
+		<div id='changebar'>
+			<div id="red" class="current"></div>
+			<div id='green'></div>
+			<div id='black'></div>
+		</div>
+		<ul id='navbar'>
+			<li><a href="#">新闻</a></li>
+			<li><a href="#">娱乐</a></li>
+			<li><a href="#">电影</a></li>
+			<li><a href="#">体育</a></li>
+			<li><a href="#">音乐</a></li>
+			<li><a href="#">旅游</a></li>
+		</ul>	
+	</div>
+	<script type='text/javascript'>
+	window.onload = function(){
+		var changes = document.getElementById('changebar').getElementsByTagName('div');
+		var link = document.getElementsByTagName('link')[0];
+		var hrefs = ['red.css','green.css','black.css'];
+		var len =changes.length;
+		//alert(len);
+		while(len--){
+			changes[len].index = len;
+			changes[len].onclick = function(){
+				for (var i = 0,len1=changes.length;i<len1;i++){
+					changes[i].className = '';
+				}
+     
+				link.href = hrefs[this.index];
+				this.className = 'current';
+	
+			};
+		}
+	};
+	</script>
+</body>
+</html>
